@@ -1,5 +1,7 @@
 from flask import Flask
 from routes.authRoutes import auth_blueprint
+from routes.productsRoutes import admin_blueprint
+from routes.clientRoutes import client_blueprint
 from db.mongodb import getDB
 from flask_login import LoginManager
 from bson import ObjectId
@@ -26,6 +28,8 @@ def load_user(user_id):
 
 
 app.register_blueprint(auth_blueprint)
+app.register_blueprint(admin_blueprint)
+app.register_blueprint(client_blueprint)
 
 if __name__ == "__main__":
     app.run(debug=True, port=3030, host="localhost")

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}
+Cliente Productos
+{% endblock %}
+
+{% block body %}
+<h1>Admin Manager</h1>
+
+
+<div>
+    <h3>Filtrar por categorías</h3>
+    <div>
+        <!-- Enlaces para ordenar productos -->
+        <a href="/productos?orden=desc">Precio Mayor a Menor</a>
+        <a href="/productos?orden=asc">Precio Menor a Mayor</a>
+    
+        <!-- Formulario de búsqueda de productos -->
+        <form action="/buscar" method="POST">
+            <input type="text" name="producto" placeholder="Busca tu producto acá">
+            <button type="submit">Buscar</button>
+        </form>
+    
+        <!-- Formulario de filtrado por precio y categoría -->
+        <form action="/filtrar" method="GET">
+            <label>Precios a partir de:</label>
+            <input type="number" name="min_precio" placeholder="Ej: 100">
+    
+            <label>Precios menores que:</label>
+            <input type="number" name="max_precio" placeholder="Ej: 500">
+    
+            <label>Categoría:</label>
+            <input type="text" name="categoria" placeholder="Ej: Electrónica">
+    
+            <button type="submit">Aplicar Filtros</button>
+        </form>
+    </div>
+    
+    
+    <h3>Productos Agregados</h3>
+    <ul >
+        {% for i in productos %}
+          <li style="display: flex; flex-direction: column; border: 1px solid red;width: 200px; margin: 2vh;">
+         Nombre:   {{ i["nombre"] }}
+         Descripcion:  {{ i["descripcion"] }}
+         Precio:   {{ i["precio"] }}
+         Categoria:   {{ i["categoria"] }}
+         Stock:   {{ i["stock"] }}
+          </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+{% endblock%}

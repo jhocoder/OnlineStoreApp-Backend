@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+Admin
+{% endblock %}
+
+{% block body %}
+<h1>Admin Manager</h1>
+
+<section>
+    <form action="/products" method="post">
+        <input type="text" name="nombre" id="nombre" placeholder="nombre">
+        <input type="text" name="descripcion" id="descripcion" placeholder="descripcion">
+        <input type="text" name="precio" id="precio" placeholder="precio">
+        <select name="categoria" id="categoria">
+            <option value="" disabled selected>Seleccionar Categoria</option>
+            <option value="deporte">Deporte</option>
+            <option value="electronica">Electronica</option>
+            <option value="hogar">Hogar</option>
+        </select>
+        <input type="number" placeholder="Ingresa stock" name="stock">
+        <button type="submit">Agregar Producto</button>
+    </form>
+</section>
+
+
+<div>
+    <h3>Productos Agregados</h3>
+    <ul >
+        {% for i in products %}
+          <li style="display: flex; flex-direction: column; border: 1px solid red;width: 200px; margin: 2vh;">
+            {{ i["nombre"] }}
+            {{ i["descripcion"] }}
+            {{ i["precio"] }}
+            {{ i["categoria"] }}
+            {{ i["stock"] }}
+            <div>
+                <form action="/edit/{{ i["_id"]}}" method="GET">
+                    <button>Editar</button>
+                </form> 
+               <form action="/delete/{{ i["_id"] }}" method="POST">
+                <button>Eliminar</button>
+            </div>
+          </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock%}

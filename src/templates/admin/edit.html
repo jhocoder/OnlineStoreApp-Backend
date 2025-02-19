@@ -1,0 +1,22 @@
+{% extends "./base.html" %}
+{% block title %}
+Edit Form
+{% endblock %}
+
+{% block body %}
+    <h1>Edita tu libro</h1>
+    <p>{{ producto }}</p>
+    <form action="/edit/{{ producto._id }}" method="POST">
+        <label for="">Nombre:</label>
+        <input type="text" value="{{ producto.nombre }}" name="nombre">
+        <label for="">Descripcion:</label>
+        <input type="text" value="{{ producto.descripcion }}" name="descripcion">
+        <label for="">Precio:</label>
+        <input type="text" value="{{ producto.precio }}" name="precio">
+        <label for="">Categoria</label>
+        <input type="text" value="{{ producto.categoria }}" name="categoria">
+        <label for="">Stock</label>
+        <input type="number" name="stock" value="{{ producto.stock}}">
+        <button type="submit">Guardar Datos</button>
+    </form>
+{% endblock %} 
