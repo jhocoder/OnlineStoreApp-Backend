@@ -1,0 +1,118 @@
+Enunciado del Proyecto: Tienda Online CRUD con MongoDB 
+Descripción General
+
+El objetivo de este ejercicio es desarrollar una aplicación web en Flask, utilizando MongoDB como base de datos, para gestionar una tienda online que permita a los usuarios registrarse, iniciar sesión y realizar operaciones CRUD (crear, leer, actualizar, eliminar) sobre productos. Además, se debe implementar un sistema de filtrado de productos.
+Requisitos Funcionales
+
+    Sistema de Registro e Inicio de Sesión
+        Los usuarios deben poder registrarse proporcionando un nombre de usuario, correo electrónico y contraseña.
+        El sistema debe permitir iniciar sesión mediante el correo electrónico y la contraseña.
+        La contraseña debe almacenarse de forma segura utilizando un algoritmo de hash (por ejemplo, bcrypt).
+        Una vez autenticado, el usuario debe ser redirigido a una página de inicio donde podrá ver los productos disponibles.
+
+    Gestión de Productos
+        Los administradores (usuarios registrados con un rol especial) deben poder realizar operaciones CRUD sobre los productos.
+        Los productos deben tener los siguientes campos: nombre, descripción, precio, stock, categoría, imagen (enlace a una imagen).
+        Los productos pueden ser listados en una página donde los usuarios puedan ver todos los productos, así como filtrar productos por categoría y ordenar por precio.
+
+    Filtrado de Productos
+        Los usuarios deben poder filtrar productos por categoría.
+        Los productos también pueden ser ordenados por precio de forma ascendente o descendente.
+
+    Interfaz de Usuario
+        Debe haber una página principal donde se muestren todos los productos.
+        Una página de registro e inicio de sesión.
+        Una página de administración donde el administrador pueda agregar, editar o eliminar productos.
+        El sistema debe ser sencillo y visualmente claro, utilizando HTML y CSS.
+
+    Base de Datos (MongoDB)
+        Utilizar MongoDB para almacenar los datos de los productos y los usuarios.
+        No utilizar ningún ORM, solo interactuar con la base de datos MongoDB de forma directa utilizando pymongo.
+
+Requisitos Técnicos
+
+    Backend:
+        Flask para el desarrollo del servidor.
+        MongoDB como base de datos.
+        pymongo para interactuar con MongoDB.
+        Flask-Login para la gestión de sesiones de usuario.
+
+    Frontend:
+        HTML para la estructura de la página.
+        CSS para el estilo básico de la aplicación.
+
+Enunciado Detallado
+1. Sistema de Usuarios
+
+    Registro de Usuarios:
+        El sistema debe permitir que un usuario se registre con un nombre de usuario, correo electrónico y contraseña.
+        El correo debe ser único.
+        La contraseña debe ser hasheada antes de ser almacenada en la base de datos.
+
+    Inicio de Sesión de Usuarios:
+        El sistema debe permitir que un usuario se loguee con su correo electrónico y contraseña.
+        El inicio de sesión debe generar una sesión que se mantenga mientras el usuario navegue por el sitio.
+
+    Autorización de Administradores:
+        Los administradores deben tener acceso a una sección especial de administración donde pueden crear, actualizar y eliminar productos.
+
+2. Gestión de Productos
+
+    CRUD de Productos:
+        Los productos deben ser gestionados por los administradores.
+        Cada producto tiene los siguientes atributos:
+            nombre (string)
+            descripción (string)
+            precio (float)
+            stock (integer)
+            categoría (string)
+            imagen (string, URL de la imagen)
+        Los administradores pueden agregar productos mediante un formulario, editar los productos existentes y eliminarlos.
+
+    Visualización de Productos:
+        Los productos deben ser visualizados en una página donde los usuarios pueden ver todos los productos disponibles.
+
+3. Filtrado y Ordenación
+
+    Filtrado:
+        Los usuarios deben poder filtrar productos por categoría. El filtrado debe actualizar la lista de productos mostrados sin necesidad de recargar la página.
+    Ordenación:
+        Los productos pueden ser ordenados por precio de forma ascendente o descendente.
+
+4. Interfaz de Usuario
+
+    El diseño debe ser simple, pero funcional.
+    Debe haber una página principal que muestra todos los productos.
+    El diseño debe incluir formularios para el registro, inicio de sesión, creación y edición de productos.
+
+Implementación
+
+    Crear el entorno de Flask y MongoDB:
+        Iniciar un proyecto de Flask y configurar la conexión con MongoDB utilizando pymongo.
+        Configurar las rutas necesarias para el registro, inicio de sesión y administración de productos.
+
+    Sistema de Autenticación:
+        Implementar el sistema de autenticación de usuarios con Flask-Login.
+        Utilizar bcrypt para almacenar las contraseñas de forma segura.
+
+    CRUD de Productos:
+        Crear las rutas necesarias para agregar, editar, eliminar y listar productos.
+
+    Filtrado y Ordenación:
+        Implementar filtros de productos por categoría y ordenación por precio.
+
+    Interfaz de Usuario:
+        Crear las vistas HTML correspondientes, utilizando formularios para el registro, inicio de sesión y gestión de productos.
+
+Criterios de Evaluación
+
+    Funcionalidad Completa:
+        El sistema debe funcionar correctamente, permitiendo registro, inicio de sesión, y operaciones CRUD sobre los productos.
+        El filtrado y la ordenación de productos deben funcionar sin errores.
+
+    Calidad del Código:
+        El código debe estar bien organizado, siguiendo las mejores prácticas de Python y Flask.
+        El uso de MongoDB debe ser directo, sin la utilización de un ORM.
+
+    Interfaz de Usuario:
+        La interfaz debe ser sencilla, pero efectiva, permitiendo una experiencia de usuario fluida.
